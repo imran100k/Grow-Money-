@@ -1,78 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Grow Money</title>
-
-  <style>
-    /* 🌿 Grow Money অ্যাপ স্টাইল */
-
-    /* কন্টেইনার ডিজাইন */
-    .container {
-      padding: 20px;
-      max-width: 600px;
-      margin: auto;
-      font-family: Arial, sans-serif;
-    }
-
-    /* প্রতিটি সেকশনের স্টাইল */
-    .section {
-      margin-bottom: 20px;
-      padding: 15px;
-      background-color: #f9f9f9;
-      border-left: 5px solid #4CAF50;
-      border-radius: 8px;
-      font-size: 18px;
-    }
-
-    /* বিজ্ঞাপন এরিয়া */
-    .ads {
-      margin-top: 30px;
-      text-align: center;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Ad Test</title>
 </head>
 <body>
-  <div class="container">
-    <h1>Welcome to Grow Money</h1>
+  <h1>Grow Money Ad Test</h1>
 
-    <div id="section1" class="section"></div>
-    <div id="section2" class="section"></div>
-    <div id="section3" class="section"></div>
-    <div id="section4" class="section"></div>
-
-    <!-- 🔸 বিজ্ঞাপন সেকশন -->
-    <div id="ad-container" class="ads">
-      <!-- আপনার প্রদত্ত Ad Script এখানে যুক্ত হয়েছে -->
-      <script src='//libtl.com/sdk.js' data-zone='9433277' data-sdk='show_9433277'></script>
-    </div>
+  <div class="ads">
+    <!-- আপনার বিজ্ঞাপন কোড -->
+    <script src='//libtl.com/sdk.js' data-zone='9433277' data-sdk='show_9433277'></script>
   </div>
-
-  <script>
-    // 🌐 Telegram WebApp ইনিশিয়ালাইজ
-    const tg = window.Telegram.WebApp;
-    tg.expand(); // Telegram WebView ফুল স্ক্রিনে নেওয়া
-
-    // 🔹 সেকশন কনটেন্ট
-    document.getElementById("section1").innerText = "🟢 প্রথম সেকশন: Grow Money সম্পর্কে জানুন";
-    document.getElementById("section2").innerText = "🔵 দ্বিতীয় সেকশন: বৈশিষ্ট্যসমূহ";
-    document.getElementById("section3").innerText = "🟠 তৃতীয় সেকশন: বিজ্ঞাপন থেকে আয়";
-    document.getElementById("section4").innerText = "🟣 চতুর্থ সেকশন: যোগাযোগ ও সহায়তা";
-  </script>
-
-  <script>
-    // 📢 Monetag বিজ্ঞাপন স্ক্রিপ্ট (Grow Money এর জন্য)
-    (function(d, z, s) {
-      s.src = 'https://www.monetag.com/a/display.js';
-      s.async = true;
-
-      s.onload = function () {
-        console.log("✅ Grow Money অ্যাপে বিজ্ঞাপন সফলভাবে লোড হয়েছে");
-      };
-
-      d.body.appendChild(s);
-    })(document, '9433277', document.createElement('script'));
-  </script>
 </body>
 </html>
