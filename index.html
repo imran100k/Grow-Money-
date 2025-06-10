@@ -1,15 +1,135 @@
 <!DOCTYPE html>
-<html>
+<html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <title>Ad Test</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grow Money Quiz & Ads</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      background: #f0f0f0;
+    }
+    h1 {
+      color: #4CAF50;
+      text-align: center;
+    }
+    .quiz-container {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .question {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .options button {
+      display: block;
+      width: 100%;
+      margin: 5px 0;
+      padding: 10px;
+      border: none;
+      background-color: #4caf50;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      text-align: left;
+    }
+    .options button:hover {
+      background-color: #45a049;
+    }
+    .feedback {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .ads {
+      text-align: center;
+      margin-top: 20px;
+      background: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px #ddd;
+      min-height: 90px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Grow Money Ad Test</h1>
 
-  <div class="ads">
-    <!-- আপনার বিজ্ঞাপন কোড -->
+  <h1>Grow Money Quiz</h1>
+
+  <div class="quiz-container" id="quiz-container">
+    <!-- Quiz content injected here -->
+  </div>
+
+  <div class="ads" id="ad-container">
+    <!-- Monetag Ad Script (libtl.com) -->
     <script src='//libtl.com/sdk.js' data-zone='9433277' data-sdk='show_9433277'></script>
   </div>
+
+  <script>
+    const tg = window.Telegram?.WebApp;
+    if (tg) tg.expand();
+
+    const quiz = [
+      {
+        question: "বাংলাদেশের রাজধানীর নাম কী?",
+        options: ["ঢাকা", "চট্টগ্রাম", "খুলনা", "রাজশাহী"],
+        answer: 0
+      },
+      {
+        question: "বাংলার প্রধান নদী কোনটি?",
+        options: ["যমুনা", "মেঘনা", "পদ্মা", "গঙ্গা"],
+        answer: 2
+      },
+      {
+        question: "বাংলাদেশের জাতীয় ফুল কী?",
+        options: ["মাধবী", "শাপলা", "গোলাপ", "কামেলিয়া"],
+        answer: 1
+      }
+    ];
+
+    let currentQuestion = 0;
+    const quizContainer = document.getElementById('quiz-container');
+
+    function showQuestion() {
+      const q = quiz[currentQuestion];
+      quizContainer.innerHTML = `
+        <div class="question">${q.question}</div>
+        <div class="options">
+          ${q.options.map((opt, i) => `<button onclick="selectAnswer(${i})">${opt}</button>`).join('')}
+        </div>
+        <div class="feedback" id="feedback"></div>
+      `;
+    }
+
+    function selectAnswer(selected) {
+      const feedback = document.getElementById('feedback');
+      const correct = quiz[currentQuestion].answer;
+
+      if (selected === correct) {
+        feedback.textContent = "🎉 সঠিক উত্তর!";
+        feedback.style.color = "green";
+      } else {
+        feedback.textContent = "❌ ভুল উত্তর। আবার চেষ্টা করুন।";
+        feedback.style.color = "red";
+      }
+
+      setTimeout(() => {
+        currentQuestion++;
+        if (currentQuestion < quiz.length) {
+          showQuestion();
+        } else {
+          quizContainer.innerHTML = `<h3>Quiz শেষ হয়েছে! ধন্যবাদ আপনার অংশগ্রহণের জন্য।</h3>`;
+        }
+      }, 1500);
+    }
+
+    showQuestion();
+  </script>
+
 </body>
 </html>
